@@ -1,16 +1,13 @@
 # coloring_app
 
-A new Flutter project.
+My new Flutter project.
 
-## Getting Started
+## TODO
 
-This project is a starting point for a Flutter application.
+The application should:
 
-A few resources to get you started if this is your first Flutter project:
++ Display the text "Hey there" in the middle of the screen
++ After tapping anywhere on the screen a background color should be changed to a random color
++ Also add any other feature to the app can be made
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Please do not use any external libraries for color generation.
