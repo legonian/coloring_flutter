@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'dart:math';
+
+import 'color_tile.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(ColorApp());
 }
 
-class MyApp extends StatelessWidget {
+class ColorApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -15,30 +16,5 @@ class MyApp extends StatelessWidget {
         body: new ColorTile(),
       ),
     );
-  }
-}
-
-class ColorTile extends StatefulWidget {
-  @override
-  ColorTileState createState() => ColorTileState();
-}
-
-class ColorTileState extends State<ColorTile> {
-  var color = Color(Random().nextInt(0xffffffff)).withAlpha(0xff);
-
-  @override
-  Widget build(BuildContext context) {
-    return new GestureDetector(
-        onTap: () {
-          print("GestureDetector clicked");
-          setState(() {
-            color = Color(Random().nextInt(0xffffffff)).withAlpha(0xff);
-          });
-        },
-        child: new Container(
-            color: color,
-            child: Center(
-              child: Text('Hey there'),
-            )));
   }
 }
