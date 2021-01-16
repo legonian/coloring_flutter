@@ -9,7 +9,7 @@ class ColorTile extends StatefulWidget {
 
 class ColorTileState extends State<ColorTile> {
   /// Define color of background and text border (if presented).
-  Color color = CreateNewColor.favorite;
+  Color _color = CreateNewColor.favorite;
 
   @override
   Widget build(BuildContext context) {
@@ -17,17 +17,17 @@ class ColorTileState extends State<ColorTile> {
     return GestureDetector(
         onTap: () {
           setState(() {
-            color = CreateNewColor.random();
+            _color = CreateNewColor.random();
           });
         },
         child: Container(
-            color: color,
+            color: _color,
             child: Center(
                 child: BorderedText(
               'Hey there',
               border: BorderStyle(
                 size: 4,
-                color: CreateNewColor.inverse(color),
+                color: CreateNewColor.inverse(_color),
               ),
             ))));
   }
