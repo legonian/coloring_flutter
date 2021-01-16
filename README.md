@@ -9,6 +9,7 @@ This app include following features:
 + After tapping anywhere on the screen a background color changes to a random 
 color
 + Use custom types of text to to make it show borders
++ Complete Unit and Windget test coverage
 
 ## Usage
 
