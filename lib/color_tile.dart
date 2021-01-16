@@ -8,26 +8,25 @@ class ColorTile extends StatefulWidget {
 }
 
 class ColorTileState extends State<ColorTile> {
-  /// Define color of background and text border (if presented).
-  Color _color = CreateNewColor.favorite;
+  var color = ColorGenerator();
 
   @override
   Widget build(BuildContext context) {
-    // Use [GestureDetector] to detect gestures.
     return GestureDetector(
         onTap: () {
           setState(() {
-            _color = CreateNewColor.random();
+            color.generateNew();
           });
         },
         child: Container(
-            color: _color,
+            color: color.background,
             child: Center(
                 child: BorderedText(
               'Hey there',
+              style: TextStyle(fontSize: 60, color: color.text),
               border: CustomBorderStyle(
                 size: 4,
-                color: CreateNewColor.inverse(_color),
+                color: color.border,
               ),
             ))));
   }
@@ -59,7 +58,6 @@ class BorderedText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // If border not presented return simple Text Widget.
     if (this.border == null) {
       return Text(
         data,
@@ -107,20 +105,31 @@ class CustomBorderStyle {
   final Color color;
 }
 
-/// Class wrap color related operations.
-class CreateNewColor {
-  /// Return my favorite color.
-  static Color get favorite {
-    return Colors.deepPurple.shade500;
+/// Class wrap describe app colors and related operations based on background.
+class ColorGenerator {
+  ColorGenerator([this.background = const Color(0xffffffff)]);
+
+  /// Main color that represent all others
+  Color background;
+
+  /// Return either dark or light color to contranst to background
+  Color get border {
+    final luminance = background.computeLuminance();
+    if (luminance < 0.5) {
+      return Colors.grey[100];
+    } else {
+      return Colors.grey[900];
+    }
   }
 
-  /// Return some random color.
-  static Color random() {
-    return Color(Random().nextInt(0xffffffff)).withAlpha(0xff);
+  /// Return fliped background color that used for text
+  Color get text {
+    return Color(0xffffffff - background.value).withAlpha(0xff);
   }
 
-  /// Return inverse color by substituting it from white.
-  static Color inverse(Color origin) {
-    return Color(0xffffffff - origin.value).withAlpha(0xff);
+  /// Generate random color and apply it to background
+  Color generateNew() {
+    background = Color(Random().nextInt(0xffffffff)).withAlpha(0xff);
+    return background;
   }
 }

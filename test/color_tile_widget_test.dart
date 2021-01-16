@@ -34,14 +34,13 @@ void main() {
   });
 
   testWidgets('ColorTile', (WidgetTester tester) async {
-    // Create Windget.
     await tester.pumpWidget(MaterialApp(home: ColorTile()));
 
-    // Tap at GestureDetector and update Widget.
     await tester.tap(find.byType(GestureDetector));
     await tester.pump();
 
-    // Save finded Container and check its color
+    // Save first and only Container and check its color
+    expect(tester.widgetList(find.byType(Container)).length, 1);
     final firstContainer =
         tester.firstWidget(find.byType(Container)) as Container;
     expect(firstContainer.color, isA<Color>());

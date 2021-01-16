@@ -4,33 +4,40 @@ import 'package:test/test.dart';
 import 'package:coloring_app/color_tile.dart';
 
 void main() {
-  group('CreateNewColor class', () {
-    test('return favorite color', () {
-      final deepPurple = Colors.deepPurple.shade500;
-      final color = CreateNewColor.favorite;
+  group('ColorGenerator class', () {
+    test('defualt color', () {
+      final defualtColor = Color(0xffffffff);
 
-      expect(color, isA<Color>());
-      expect(color.value, deepPurple.value);
+      final color = ColorGenerator();
+
+      expect(color.background, isA<Color>());
+      expect(color.border, isA<Color>());
+      expect(color.text, isA<Color>());
+
+      expect(color.background.value, defualtColor.value);
+
+      color.generateNew();
     });
 
-    test('return inverse color', () {
-      final origin = Color(0x11111111);
-      final color = CreateNewColor.inverse(origin);
+    test('border and text colors and randomize new', () {
+      final someBlackishColor = Color(0x11111111);
 
-      expect(color, isA<Color>());
-      expect(color.value, 0xffeeeeee);
-    });
+      final color = ColorGenerator(someBlackishColor);
 
-    test('return probably random color', () {
-      final color = CreateNewColor.random();
+      expect(color.background, isA<Color>());
+      expect(color.background.value, someBlackishColor.value);
 
-      expect(color, isA<Color>());
-      // random method define Alpha level as 0xFF
-      expect(color.value, greaterThanOrEqualTo(0xff000000));
+      expect(color.border, isA<Color>());
+      expect(color.border.value, Colors.grey[100].value);
 
-      final anotherColor = CreateNewColor.random();
-      // can be equal rarely though
-      expect(color.value, isNot(anotherColor.value));
+      expect(color.text, isA<Color>());
+      expect(color.text.value, 0xffeeeeee);
+
+      color.generateNew();
+
+      expect(color.background, isA<Color>());
+      expect(color.background.alpha, 0xff);
+      expect(color.background.value, isNot(someBlackishColor.value));
     });
   });
 
@@ -42,8 +49,7 @@ void main() {
     });
 
     test('creating', () {
-      // Some random values.
-      final size = 11.0;
+      final size = 10.0;
       final color = Color(0);
 
       CustomBorderStyle style = CustomBorderStyle(size: size, color: color);
