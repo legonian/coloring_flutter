@@ -15,3 +15,9 @@ color
 To run an application, type ``flutter run`` in console inside project directory.
 See the [getting started guide](https://flutter.dev/getting-started/) to install
 the `flutter` tool.
+
+## Example
+
+Here is how its picture of different colors and text with borders:
+
+<img width="400" alt="Info Page" src="https://github.com/legonian/coloring_flutter/raw/master/example.png">
