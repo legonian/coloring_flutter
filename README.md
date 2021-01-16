@@ -1,13 +1,17 @@
 # coloring_app
 
-My new Flutter project.
+This Flutter project contain simple application that display text in the middle 
+of the screen.
 
-## TODO
+## Features
 
-The application should:
+This app include following features:
++ After tapping anywhere on the screen a background color changes to a random 
+color
++ Use custom types of text to to make it show borders
 
-+ Display the text "Hey there" in the middle of the screen
-+ After tapping anywhere on the screen a background color should be changed to a random color
-+ Also add any other feature to the app can be made
+## Usage
 
-Please do not use any external libraries for color generation.
+To run an application, type ``flutter run`` in console inside project directory.
+See the [getting started guide](https://flutter.dev/getting-started/) to install
+the `flutter` tool.
