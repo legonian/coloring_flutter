@@ -25,7 +25,7 @@ class ColorTileState extends State<ColorTile> {
             child: Center(
                 child: BorderedText(
               'Hey there',
-              border: BorderStyle(
+              border: CustomBorderStyle(
                 size: 4,
                 color: CreateNewColor.inverse(_color),
               ),
@@ -55,7 +55,7 @@ class BorderedText extends StatelessWidget {
   final TextStyle style;
 
   /// If non-null, borders will be displayed around the text.
-  final BorderStyle border;
+  final CustomBorderStyle border;
 
   @override
   Widget build(BuildContext context) {
@@ -91,9 +91,9 @@ class BorderedText extends StatelessWidget {
 }
 
 /// Wrap parameters that define text border in ``BorderedText`` class.
-class BorderStyle {
+class CustomBorderStyle {
   /// Creates a combination of border parameters.
-  const BorderStyle({
+  const CustomBorderStyle({
     @required this.size,
     @required this.color,
   });
