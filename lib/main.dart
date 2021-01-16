@@ -7,13 +7,13 @@ void main() {
 }
 
 class ColorApp extends StatelessWidget {
-  // This widget is the root of your application.
+  // Root application widget.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Coloring Flutter',
       home: Scaffold(
-        body: new ColorTile(),
+        body: ColorTile(),
       ),
     );
   }
