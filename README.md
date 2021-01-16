@@ -10,6 +10,7 @@ This app include following features:
 color
 + Use custom types of text to to make it show borders
 + Complete Unit and Windget test coverage
++ CI/CD with Github Actions
 
 ## Usage
 
