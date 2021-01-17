@@ -18,3 +18,6 @@ color
 To run an application, type ``flutter run`` in console inside project directory.
 See the [getting started guide](https://flutter.dev/getting-started/) to install
 the `flutter` tool.
+
+Also to run integration test type ``flutter drive --target=test_driver/app.dart``,
+and performance results will be available in ``/build`` folder in json format.
