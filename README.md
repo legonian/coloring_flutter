@@ -21,3 +21,8 @@ the `flutter` tool.
 
 Also to run integration test type ``flutter drive --target=test_driver/app.dart``,
 and performance results will be available in ``/build`` folder in json format.
+
+## Download
+
+Lastest latest available at 
+[Releases section](https://github.com/legonian/coloring_flutter/releases/latest)
