@@ -13,12 +13,14 @@ class ColorTileState extends State<ColorTile> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
+        key: Key('GestureDetector'),
         onTap: () {
           setState(() {
             color.generateNew();
           });
         },
         child: Container(
+            key: Key('ColorContainer'),
             color: color.background,
             child: Center(
                 child: BorderedText(
