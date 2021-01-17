@@ -15,7 +15,7 @@ color
 
 ## Usage
 
-To run an application, type ``flutter run`` in console inside project directory.
+To run an application type ``flutter run`` in console inside project directory.
 See the [getting started guide](https://flutter.dev/getting-started/) to install
 the `flutter` tool.
 
@@ -24,5 +24,5 @@ and performance results will be available in ``/build`` folder in json format.
 
 ## Download
 
-Lastest latest available at 
-[Releases section](https://github.com/legonian/coloring_flutter/releases/latest)
+You can find latests available build at 
+[releases section](https://github.com/legonian/coloring_flutter/releases).
