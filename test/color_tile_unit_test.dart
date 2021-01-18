@@ -42,12 +42,6 @@ void main() {
   });
 
   group('CustomBorderStyle class', () {
-    test('is nullable', () {
-      CustomBorderStyle style;
-
-      expect(style, isNull);
-    });
-
     test('creating', () {
       final size = 10.0;
       final color = Color(0);
