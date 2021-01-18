@@ -111,10 +111,10 @@ class CustomBorderStyle {
 class ColorGenerator {
   ColorGenerator([this.background = const Color(0xffffffff)]);
 
-  /// Main color that represent all others
+  /// Main color that represent all others.
   Color background;
 
-  /// Return either dark or light color to contranst to background
+  /// Return either dark or light color to contranst to background.
   Color get border {
     final luminance = background.computeLuminance();
     if (luminance < 0.5) {
@@ -124,12 +124,10 @@ class ColorGenerator {
     }
   }
 
-  /// Return fliped background color that used for text
-  Color get text {
-    return Color(0xffffffff - background.value).withAlpha(0xff);
-  }
+  /// Return fliped background color that used for text.
+  Color get text => Color(0xffffffff - background.value).withAlpha(0xff);
 
-  /// Generate random color and apply it to background
+  /// Generate random color and apply it to background variable.
   Color generateNew() {
     background = Color(Random().nextInt(0xffffffff)).withAlpha(0xff);
     return background;
