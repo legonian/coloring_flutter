@@ -36,27 +36,25 @@ void main() {
   testWidgets('ColorTile', (WidgetTester tester) async {
     await tester.pumpWidget(MaterialApp(home: ColorTile()));
 
-    await tester.tap(find.byType(GestureDetector));
+    final gestureDetectorFinder = find.byKey(Key('GestureDetector'));
+    await tester.tap(gestureDetectorFinder);
     await tester.pump();
 
-    // Save first and only Container and check its color
-    expect(tester.widgetList(find.byType(Container)).length, 1);
-    final firstContainer =
-        tester.firstWidget(find.byType(Container)) as Container;
-    expect(firstContainer.color, isA<Color>());
-    expect(firstContainer.color.value, greaterThanOrEqualTo(0xff000000));
+    final colorContainerFinder = find.byKey(Key('ColorContainer'));
 
-    // Tap at GestureDetector again
-    await tester.tap(find.byType(GestureDetector));
+    final colorContainer =
+        tester.firstWidget(colorContainerFinder) as Container;
+    expect(colorContainer.color, isA<Color>());
+    expect(colorContainer.color.value, greaterThanOrEqualTo(0xff000000));
+
+    await tester.tap(gestureDetectorFinder);
     await tester.pump();
 
-    // Save finded Container and check its color
-    final secondContainer =
-        tester.firstWidget(find.byType(Container)) as Container;
-    expect(secondContainer.color, isA<Color>());
-    expect(secondContainer.color.value, greaterThanOrEqualTo(0xff000000));
+    final newColorContainer =
+        tester.firstWidget(colorContainerFinder) as Container;
+    expect(newColorContainer.color, isA<Color>());
+    expect(newColorContainer.color.value, greaterThanOrEqualTo(0xff000000));
 
-    // Compare colors
-    expect(firstContainer.color.value, isNot(secondContainer.color.value));
+    expect(colorContainer.color.value, isNot(newColorContainer.color.value));
   });
 }
