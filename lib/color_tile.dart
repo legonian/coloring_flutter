@@ -8,7 +8,7 @@ class ColorTile extends StatefulWidget {
 }
 
 class ColorTileState extends State<ColorTile> {
-  var color = ColorGenerator();
+  var _color = ColorGenerator();
 
   @override
   Widget build(BuildContext context) {
@@ -16,19 +16,19 @@ class ColorTileState extends State<ColorTile> {
         key: Key('GestureDetector'),
         onTap: () {
           setState(() {
-            color.generateNew();
+            _color.generateNew();
           });
         },
         child: Container(
             key: Key('ColorContainer'),
-            color: color.background,
+            color: _color.background,
             child: Center(
                 child: BorderedText(
               'Hey there',
-              style: TextStyle(fontSize: 60, color: color.text),
+              style: TextStyle(fontSize: 60, color: _color.text),
               border: CustomBorderStyle(
                 size: 4,
-                color: color.border,
+                color: _color.border,
               ),
             ))));
   }
