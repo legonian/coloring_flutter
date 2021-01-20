@@ -3,7 +3,6 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:coloring_app/main.dart';
 import 'package:coloring_app/color_tile.dart';
-import 'package:coloring_app/color_theme.dart';
 
 void main() {
   group('BorderedText Widget', () {
@@ -20,10 +19,8 @@ void main() {
 
       BorderedText borderedText = BorderedText(
         'T',
-        border: CustomBorderStyle(
-          size: size,
-          color: color,
-        ),
+        borderSize: size,
+        borderColor: color,
       );
 
       await tester.pumpWidget(MaterialApp(home: borderedText));

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:test/test.dart';
 
-import 'package:coloring_app/color_theme.dart';
+import 'package:coloring_app/options.dart';
 
 void main() {
   group('ColorGenerator class', () {
@@ -38,23 +38,6 @@ void main() {
       expect(color.background, isA<Color>());
       expect(color.background.alpha, 0xff);
       expect(color.background.value, isNot(someBlackishColor.value));
-    });
-  });
-
-  group('CustomBorderStyle class', () {
-    test('creating', () {
-      final size = 10.0;
-      final color = Color(0);
-
-      CustomBorderStyle style = CustomBorderStyle(size: size, color: color);
-
-      expect(style, isA<CustomBorderStyle>());
-
-      expect(style.size, isA<double>());
-      expect(style.size, size);
-
-      expect(style.color, isA<Color>());
-      expect(style.color, color);
     });
   });
 }

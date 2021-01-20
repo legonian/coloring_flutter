@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'color_theme.dart';
+import 'main.dart';
 
 class ColorTile extends StatefulWidget {
   @override
@@ -14,21 +14,20 @@ class ColorTileState extends State<ColorTile> {
         key: Key('GestureDetector'),
         onTap: () {
           setState(() {
-            ColorContext.of(context).color.generateNew();
+            ColorApp.options.color.generateNew();
           });
         },
         child: Container(
             key: Key('ColorContainer'),
-            color: ColorContext.of(context).color.background,
+            color: ColorApp.options.color.background,
             child: Center(
                 child: BorderedText(
-              'Hey there',
+              ColorApp.options.textData,
               style: TextStyle(
-                  fontSize: 60, color: ColorContext.of(context).color.text),
-              border: CustomBorderStyle(
-                size: 4,
-                color: ColorContext.of(context).color.border,
-              ),
+                  fontSize: ColorApp.options.textSize,
+                  color: ColorApp.options.color.text),
+              borderSize: ColorApp.options.borderSize,
+              borderColor: ColorApp.options.color.border,
             ))));
   }
 }
@@ -42,7 +41,8 @@ class BorderedText extends StatelessWidget {
   const BorderedText(
     this.data, {
     this.style = const TextStyle(fontSize: 60, color: Colors.white),
-    this.border,
+    this.borderColor = Colors.black,
+    this.borderSize = 0,
   }) : assert(
           data != null,
           'A non-null String must be provided to a BorderedText widget.',
@@ -54,12 +54,17 @@ class BorderedText extends StatelessWidget {
   /// If non-null, the style to use for this text.
   final TextStyle style;
 
-  /// If non-null, borders will be displayed around the text.
-  final CustomBorderStyle border;
+  /// Used in strokeWidth in ``Paint`` foreground object and represent size of
+  /// border.
+  final double borderSize;
+
+  /// Used in color in ``Paint`` foreground object and represent color of
+  /// border.
+  final Color borderColor;
 
   @override
   Widget build(BuildContext context) {
-    if (this.border == null) {
+    if (this.borderSize == 0) {
       return Text(
         data,
         style: style,
@@ -74,8 +79,8 @@ class BorderedText extends StatelessWidget {
               fontSize: style.fontSize,
               foreground: Paint()
                 ..style = PaintingStyle.stroke
-                ..strokeWidth = border.size
-                ..color = border.color,
+                ..strokeWidth = borderSize
+                ..color = borderColor,
             ),
           ),
           // Solid text as fill.
