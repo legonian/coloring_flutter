@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'main.dart';
+import 'options.dart';
 
 class ColorTile extends StatefulWidget {
   @override
@@ -9,26 +9,44 @@ class ColorTile extends StatefulWidget {
 
 class ColorTileState extends State<ColorTile> {
   @override
+  void initState() {
+    super.initState();
+    options = Options(textData: 'Hey There', textSize: 80, borderSize: 5);
+    loadData();
+  }
+
+  Options options;
+
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
         key: Key('GestureDetector'),
         onTap: () {
           setState(() {
-            ColorApp.options.color.generateNew();
+            options.color.generateNew();
+            saveData();
           });
         },
         child: Container(
             key: Key('ColorContainer'),
-            color: ColorApp.options.color.background,
+            color: options.color.background,
             child: Center(
                 child: BorderedText(
-              ColorApp.options.textData,
+              options.textData,
               style: TextStyle(
-                  fontSize: ColorApp.options.textSize,
-                  color: ColorApp.options.color.text),
-              borderSize: ColorApp.options.borderSize,
-              borderColor: ColorApp.options.color.border,
+                  fontSize: options.textSize, color: options.color.text),
+              borderSize: options.borderSize,
+              borderColor: options.color.border,
             ))));
+  }
+
+  loadData() async {
+    await options.loadData();
+    setState(() {});
+  }
+
+  saveData() async {
+    await options.saveData();
   }
 }
 
