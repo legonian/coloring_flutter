@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:coloring_app/main.dart';
 import 'package:coloring_app/color_tile.dart';
+import 'package:coloring_app/color_theme.dart';
 
 void main() {
   group('BorderedText Widget', () {
@@ -34,7 +36,7 @@ void main() {
   });
 
   testWidgets('ColorTile', (WidgetTester tester) async {
-    await tester.pumpWidget(MaterialApp(home: ColorTile()));
+    await tester.pumpWidget(ColorApp());
 
     final gestureDetectorFinder = find.byKey(Key('GestureDetector'));
     await tester.tap(gestureDetectorFinder);

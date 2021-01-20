@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'color_theme.dart';
 import 'color_tile.dart';
 
 void main() {
@@ -13,7 +14,7 @@ class ColorApp extends StatelessWidget {
     return MaterialApp(
       title: 'Coloring Flutter',
       home: Scaffold(
-        body: ColorTile(),
+        body: AppColorTheme(color: ColorGenerator(), child: ColorTile()),
       ),
     );
   }

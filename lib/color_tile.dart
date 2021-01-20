@@ -1,6 +1,6 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
+
+import 'color_theme.dart';
 
 class ColorTile extends StatefulWidget {
   @override
@@ -8,27 +8,26 @@ class ColorTile extends StatefulWidget {
 }
 
 class ColorTileState extends State<ColorTile> {
-  var _color = ColorGenerator();
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
         key: Key('GestureDetector'),
         onTap: () {
           setState(() {
-            _color.generateNew();
+            AppColorTheme.of(context).color.generateNew();
           });
         },
         child: Container(
             key: Key('ColorContainer'),
-            color: _color.background,
+            color: AppColorTheme.of(context).color.background,
             child: Center(
                 child: BorderedText(
               'Hey there',
-              style: TextStyle(fontSize: 60, color: _color.text),
+              style: TextStyle(
+                  fontSize: 60, color: AppColorTheme.of(context).color.text),
               border: CustomBorderStyle(
                 size: 4,
-                color: _color.border,
+                color: AppColorTheme.of(context).color.border,
               ),
             ))));
   }
@@ -87,49 +86,5 @@ class BorderedText extends StatelessWidget {
         ],
       );
     }
-  }
-}
-
-/// Wrap parameters that define text border in ``BorderedText`` class.
-class CustomBorderStyle {
-  /// Creates a combination of border parameters.
-  const CustomBorderStyle({
-    @required this.size,
-    @required this.color,
-  });
-
-  /// Used in strokeWidth in ``Paint`` foreground object and represent size of
-  /// border.
-  final double size;
-
-  /// Used in color in ``Paint`` foreground object and represent color of
-  /// border.
-  final Color color;
-}
-
-/// Class wrap describe app colors and related operations based on background.
-class ColorGenerator {
-  ColorGenerator([this.background = const Color(0xffffffff)]);
-
-  /// Main color that represent all others.
-  Color background;
-
-  /// Return either dark or light color to contranst to background.
-  Color get border {
-    final luminance = background.computeLuminance();
-    if (luminance < 0.5) {
-      return Colors.grey[100];
-    } else {
-      return Colors.grey[900];
-    }
-  }
-
-  /// Return fliped background color that used for text.
-  Color get text => Color(0xffffffff - background.value).withAlpha(0xff);
-
-  /// Generate random color and apply it to background variable.
-  Color generateNew() {
-    background = Color(Random().nextInt(0xffffffff)).withAlpha(0xff);
-    return background;
   }
 }

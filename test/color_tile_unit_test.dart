@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:test/test.dart';
 
-import 'package:coloring_app/color_tile.dart';
+import 'package:coloring_app/color_theme.dart';
 
 void main() {
   group('ColorGenerator class', () {
