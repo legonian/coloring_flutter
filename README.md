@@ -8,7 +8,8 @@ of the screen.
 This app include following features:
 + After tapping anywhere on the screen a background color changes to a random 
 color
-+ Use custom types of text to to make it show borders
++ Use custom type of text to to make it show borders
++ Color stay the same even after restarting app
 + Complete Unit and Windget test coverage
 + Some simple integration testing for no reason that record performance to json 
 + CI/CD with Github Actions
