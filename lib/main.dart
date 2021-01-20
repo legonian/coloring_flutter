@@ -14,7 +14,7 @@ class ColorApp extends StatelessWidget {
     return MaterialApp(
       title: 'Coloring Flutter',
       home: Scaffold(
-        body: AppColorTheme(color: ColorGenerator(), child: ColorTile()),
+        body: ColorContext(color: ColorGenerator(), child: ColorTile()),
       ),
     );
   }

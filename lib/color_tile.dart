@@ -14,20 +14,20 @@ class ColorTileState extends State<ColorTile> {
         key: Key('GestureDetector'),
         onTap: () {
           setState(() {
-            AppColorTheme.of(context).color.generateNew();
+            ColorContext.of(context).color.generateNew();
           });
         },
         child: Container(
             key: Key('ColorContainer'),
-            color: AppColorTheme.of(context).color.background,
+            color: ColorContext.of(context).color.background,
             child: Center(
                 child: BorderedText(
               'Hey there',
               style: TextStyle(
-                  fontSize: 60, color: AppColorTheme.of(context).color.text),
+                  fontSize: 60, color: ColorContext.of(context).color.text),
               border: CustomBorderStyle(
                 size: 4,
-                color: AppColorTheme.of(context).color.border,
+                color: ColorContext.of(context).color.border,
               ),
             ))));
   }

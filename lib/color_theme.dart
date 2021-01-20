@@ -2,8 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-class AppColorTheme extends InheritedWidget {
-  const AppColorTheme({
+class ColorContext extends InheritedWidget {
+  const ColorContext({
     Key key,
     @required this.color,
     @required Widget child,
@@ -13,12 +13,12 @@ class AppColorTheme extends InheritedWidget {
 
   final ColorGenerator color;
 
-  static AppColorTheme of(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<AppColorTheme>();
+  static ColorContext of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<ColorContext>();
   }
 
   @override
-  bool updateShouldNotify(AppColorTheme old) =>
+  bool updateShouldNotify(ColorContext old) =>
       color.background != old.color.background;
 }
 
