@@ -5,7 +5,7 @@ import 'package:coloring_app/main.dart';
 import 'package:coloring_app/color_tile.dart';
 
 void main() {
-  group('BorderedText Widget', () {
+  group('BorderedText', () {
     testWidgets('creating without borders', (WidgetTester tester) async {
       await tester.pumpWidget(MaterialApp(home: BorderedText('T')));
 
